@@ -19,14 +19,24 @@ const Item = ({ itemId, userId }) => {
   console.log(item);
   console.log(user);
 
+  let completedClass = "";
+
+  if (item.completed) completedClass = " completed";
+
   const handleEdit = () => navigate(`/dash/items/${itemId}`);
 
   return (
-    <tr className="table__row">
-      <td className="table__cell group__title">{user?.username}</td>
-      <td className="table__cell group__username">{item?.itemName}</td>
-      <td className="table__cell group__username">{item?.quantity}</td>
-      <td className="table__cell">
+    <tr className={`table__row `}>
+      <td className={`table__cell ${completedClass} group__title`}>
+        {user?.username}
+      </td>
+      <td className={`table__cell ${completedClass} group__username`}>
+        {item?.itemName}
+      </td>
+      <td className={`table__cell ${completedClass} group__username`}>
+        {item?.quantity}
+      </td>
+      <td className={`table__cell ${completedClass}`}>
         <button className="icon-button table__button" onClick={handleEdit}>
           <FontAwesomeIcon icon={faPenToSquare} />
         </button>

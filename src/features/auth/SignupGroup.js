@@ -16,12 +16,6 @@ const USER_REGEX = /^[A-z]{3,20}$/;
 const PWD_REGEX = /^[A-z0-9!@#$%]{4,12}$/;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-// form
-// // We create a and account
-// // ask if you already have a group to join or creating new one.
-// // send request to create user and create group.
-// // Link that user to the new or old group.
-
 const SignupGroup = () => {
   const [
     login,
@@ -36,7 +30,6 @@ const SignupGroup = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // controlled state
   const [username, setUsername] = useState("");
   const [validUsername, setValidUsername] = useState(false);
 
@@ -52,14 +45,12 @@ const SignupGroup = () => {
   const [password, setPassword] = useState("");
   const [validPassword, setValidPassword] = useState(false);
 
-  // controled state functions
   const onFamilyGroupIdChange = (e) => setFamilyGroupId(e.target.value);
   const onLastNameChanged = (e) => setLastName(e.target.value);
   const onEmailChanged = (e) => setEmail(e.target.value);
   const onPasswordChanged = (e) => setPassword(e.target.value);
   const onUsernameChanged = (e) => setUsername(e.target.value);
 
-  // effects to check valid fields
   useEffect(() => {
     setValidLastName(USER_REGEX.test(lastName));
   }, [lastName]);

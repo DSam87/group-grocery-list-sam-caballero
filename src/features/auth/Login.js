@@ -38,8 +38,12 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("Handle submit");
     try {
-      const { accessToken } = await login({ email, password }).unwrap();
+      const { accessToken } = await login({
+        email,
+        password,
+      }).unwrap();
       dispatch(setCredentials({ accessToken }));
       setEmail("");
       setPassword("");

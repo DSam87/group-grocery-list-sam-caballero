@@ -18,6 +18,7 @@ import NewGroupForm from "./features/groups/NewGroupForm";
 import PersistLogin from "./features/auth/PersistLogin";
 import NewItemForm from "./features/items/NewItemForm";
 import SignupGroup from "./features/auth/SignupGroup";
+import EditItem from "./features/items/EditItem";
 
 function App() {
   useTitle("Group Grocery List");
@@ -48,6 +49,7 @@ function App() {
               <Route path="items">
                 <Route index element={<ItemsList />} />
                 <Route path="new" element={<NewItemForm />} />
+                <Route path=":id" element={<EditItem />} />
               </Route>
             </Route>
             {/* </Route> */}

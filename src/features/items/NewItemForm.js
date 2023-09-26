@@ -26,11 +26,9 @@ const NewItemForm = () => {
   const [quantity, setQuantity] = useState(1);
   const [validQuantity, setValidQuantity] = useState(true);
 
-  // controled state functions
   const onItemNameChanged = (e) => setItemName(e.target.value);
   const onQuantityChanged = (e) => setQuantity(+e.target.value);
 
-  // effects to check valid fields
   useEffect(() => {
     setValidItemName(typeof itemName === "string" && itemName.length >= 3);
   }, [itemName, validItemName]);
@@ -38,6 +36,10 @@ const NewItemForm = () => {
   useEffect(() => {
     setValidQuantity(typeof quantity === typeof 1);
   }, [quantity, validQuantity]);
+
+  useEffect(() => {
+    setIsVisible(" visible");
+  }, []);
 
   useEffect(() => {
     if (isSuccess) {
@@ -59,11 +61,12 @@ const NewItemForm = () => {
         itemName,
       });
     }
+    navigate("/dash/items");
   };
 
   const onCancelClicked = async (e) => {
     e.preventDefault();
-    navigate("/dash");
+    navigate("/dash/items");
   };
 
   const errClass = isError ? "errmsg" : "offscreen";

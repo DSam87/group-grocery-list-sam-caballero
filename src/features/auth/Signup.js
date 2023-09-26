@@ -4,8 +4,8 @@ import usePersist from "../../hooks/usePersist";
 import { useState, useEffect } from "react";
 import { setCredentials } from "./authSlice";
 import { useDispatch } from "react-redux";
-import { useLoginMutation } from "./authApiSlice";
 import { useAddNewUserMutation } from "../users/usersApiSlice";
+import { useLoginMutation } from "./authApiSlice";
 
 const Signup = () => {
   const [username, setUsername] = useState("");
@@ -38,11 +38,12 @@ const Signup = () => {
 
   let canSave;
 
-  if (!isLoading && username.length > 3) {
+  if (!isLoading && username.length >= 3) {
     canSave = true;
   }
 
   const handleSubmit = async function (e) {
+    console.log("Handle submit");
     e.preventDefault();
     if (canSave) {
       const { accessToken } = await login({
@@ -53,8 +54,6 @@ const Signup = () => {
         isSignup: true,
       }).unwrap();
 
-      // dispatch(setCredentials({ accessToken }));
-
       if (accessToken) {
         dispatch(setCredentials({ accessToken }));
       } else {
@@ -62,8 +61,6 @@ const Signup = () => {
       }
     }
   };
-
-  useEffect(() => {}, [isSuccess, username, password, familyGroupId, email]);
 
   useEffect(() => {
     if (isSuccess) {
@@ -74,14 +71,14 @@ const Signup = () => {
   return (
     <section className="public">
       <header>
-        <h1>User Login</h1>
+        <h1>Signup</h1>
       </header>
       <main className="login ">
         {/* <p ref={errRef} className={errClass} aria-live="assertive">
           {errMsg}
         </p> */}
 
-        <form className={"public-form"} method="post" onSubmit={handleSubmit}>
+        <form className={"public-form"} method="post">
           <label htmlFor="username">Username:</label>
           <input
             className="form__input"
@@ -129,7 +126,12 @@ const Signup = () => {
             </Link>
           </div>
 
-          <button type="submit" className="form__submit-button">
+          <button
+            type="submit"
+            className="form__submit-button"
+            onClick={handleSubmit}
+          >
+            {" "}
             Create User
           </button>
         </form>

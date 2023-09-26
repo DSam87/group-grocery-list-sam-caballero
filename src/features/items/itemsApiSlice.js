@@ -38,10 +38,31 @@ export const itemsApiSlice = apiSlice.injectEndpoints({
         return [{ type: "Item", id: arg.id }];
       },
     }),
+    updateItem: builder.mutation({
+      query: (initialItemData) => ({
+        url: "/items",
+        method: "PATCH",
+        body: { ...initialItemData },
+      }),
+      invalidatesTags: (result, error, arg) => [{ type: "Item", id: arg.id }],
+    }),
+    deleteItem: builder.mutation({
+      query: (initialItemData) => ({
+        url: "/items",
+        method: "DELETE",
+        body: { ...initialItemData },
+      }),
+      invalidatesTags: (result, error, arg) => [{ type: "Item", id: arg.id }],
+    }),
   }),
 });
 
-export const { useGetItemsQuery, useAddNewItemMutation } = itemsApiSlice;
+export const {
+  useGetItemsQuery,
+  useAddNewItemMutation,
+  useUpdateItemMutation,
+  useDeleteItemMutation,
+} = itemsApiSlice;
 
 const selectItemResult = itemsApiSlice.endpoints.getItems.select();
 

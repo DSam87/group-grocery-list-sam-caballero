@@ -3,6 +3,7 @@ import { useUpdateUserMutation, useDeleteUserMutation } from "./usersApiSlice";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSave, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { useSendLogoutMutation } from "../auth/authApiSlice";
 
 const USER_REGEX = /^[A-z]{3,20}$/;
 const PWD_REGEX = /^[A-z0-9!@#$%]{4,12}$/;
@@ -15,6 +16,8 @@ const EditUserForm = ({ user }) => {
     deleteUser,
     { isSuccess: isDelSuccess, isError: isDelError, error: delerror },
   ] = useDeleteUserMutation();
+
+  const [sendLogout, { isSuccess: logoutIsSuccess }] = useSendLogoutMutation();
 
   const navigate = useNavigate();
 
@@ -54,15 +57,14 @@ const EditUserForm = ({ user }) => {
   }, [familyGroupId]);
 
   useEffect(() => {
-    if (isSuccess || isDelSuccess) {
+    if (isSuccess) {
       setUsername("");
       setPassword("");
       setEmail("");
       setFamilyGroupId("");
-
-      navigate("/dash/users");
+      navigate("/dash/items");
     }
-  }, [isSuccess, isDelSuccess, navigate]);
+  }, [isSuccess, navigate]);
 
   const onPasswordChanged = (e) => setPassword(e.target.value);
   const onUsernameChanged = (e) => setUsername(e.target.value);
@@ -88,6 +90,8 @@ const EditUserForm = ({ user }) => {
   const onDeleteUserClicked = async (e) => {
     e.preventDefault();
     await deleteUser({ id: user.id, username, email, password, familyGroupId });
+    await sendLogout();
+    navigate("/");
   };
 
   let canSave =
