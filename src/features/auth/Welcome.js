@@ -24,7 +24,7 @@ const Welcome = () => {
       {" "}
       {/* <p>{today}</p>
       <h1>Welcome {username}!</h1> */}
-      <section className="welcome">
+      <section className="welcome h-1">
         {email ? (
           <>
             <p>

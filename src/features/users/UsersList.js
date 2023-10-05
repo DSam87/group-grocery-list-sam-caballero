@@ -43,22 +43,27 @@ const UsersList = () => {
       : null;
 
     content = (
-      <table className={`table table--users ${isVisible}`}>
-        <thead className="table__thead">
-          <tr>
-            <th scope="col" className="table__th user__username">
-              Username
-            </th>
-            <th scope="col" className="table__th user__group">
-              Family/Group ID
-            </th>
-            <th scope="col" className="table__th user__edit">
-              Edit
-            </th>
-          </tr>
-        </thead>
-        <tbody>{tableContent}</tbody>
-      </table>
+      <>
+        <h2 id="dash-header" className={`${isVisible}`}>
+          Group Users
+        </h2>
+        <table className={`table table--users ${isVisible}`}>
+          <thead className="table__thead">
+            <tr>
+              <th scope="col" className="table__th user__username">
+                Username
+              </th>
+              <th scope="col" className="table__th user__group">
+                Family/Group ID
+              </th>
+              <th scope="col" className="table__th user__edit">
+                Edit
+              </th>
+            </tr>
+          </thead>
+          <tbody>{tableContent}</tbody>
+        </table>
+      </>
     );
   }
 

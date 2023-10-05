@@ -21,11 +21,6 @@ const Group = ({ groupId }) => {
       <td className="table__cell group__title">{group.familyGroupId}</td>
       <td className="table__cell group__username">{group.familyLastName}</td>
       <td className="table__cell group__username">{group.creatorEmail}</td>
-      <td className="table__cell">
-        <button className="icon-button table__button" onClick={handleEdit}>
-          <FontAwesomeIcon icon={faPenToSquare} />
-        </button>
-      </td>
     </tr>
   );
 };

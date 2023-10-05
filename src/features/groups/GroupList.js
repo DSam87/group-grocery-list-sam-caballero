@@ -46,25 +46,30 @@ const GroupList = () => {
       : null;
 
     content = (
-      <table className={`table table--groups ${isVisible}`}>
-        <thead className="table__thead">
-          <tr>
-            <th scope="col" className="table__th group__status">
-              Family/Group ID
-            </th>
-            <th scope="col" className="table__th group__username">
-              Owner
-            </th>
-            <th scope="col" className="table__th group__username">
-              Owner Email
-            </th>
-            <th scope="col" className="table__th group__edit">
-              Edit
-            </th>
-          </tr>
-        </thead>
-        <tbody>{tableContent}</tbody>
-      </table>
+      <>
+        <h2 id="dash-header" className={`${isVisible}`}>
+          Group Info
+        </h2>
+        <table
+          id={"table--group-info"}
+          className={`table table--groups ${isVisible}`}
+        >
+          <thead className="table__thead">
+            <tr>
+              <th scope="col" className="table__th group__status">
+                Family/Group ID
+              </th>
+              <th scope="col" className="table__th group__username">
+                Owner
+              </th>
+              <th scope="col" className="table__th group__username">
+                Owner Email
+              </th>
+            </tr>
+          </thead>
+          <tbody>{tableContent}</tbody>
+        </table>
+      </>
     );
   }
 

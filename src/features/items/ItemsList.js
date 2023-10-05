@@ -42,25 +42,30 @@ const ItemsList = () => {
     });
 
     content = (
-      <table className={`table table--groups ${isVisible}`}>
-        <thead className="table__thead">
-          <tr>
-            <th scope="col" className="table__th group__status">
-              Username
-            </th>
-            <th scope="col" className="table__th group__username">
-              Item
-            </th>
-            <th scope="col" className="table__th group__username">
-              Quantity
-            </th>
-            <th scope="col" className="table__th group__edit">
-              Edit
-            </th>
-          </tr>
-        </thead>
-        <tbody>{tableContent}</tbody>
-      </table>
+      <>
+        <h2 id="dash-header" className={`${isVisible}`}>
+          Group Items
+        </h2>
+        <table className={`table table--groups ${isVisible}`}>
+          <thead className="table__thead">
+            <tr>
+              <th scope="col" className="table__th group__status">
+                Username
+              </th>
+              <th scope="col" className="table__th group__username">
+                Item
+              </th>
+              <th scope="col" className="table__th group__username">
+                Quantity
+              </th>
+              <th scope="col" className="table__th group__edit">
+                Edit
+              </th>
+            </tr>
+          </thead>
+          <tbody>{tableContent}</tbody>
+        </table>
+      </>
     );
   }
   return content;

@@ -55,7 +55,9 @@ const DashHeader = () => {
   let newNoteButton = null;
   if (pathname.includes("/dash")) {
     newNoteButton = (
-      <button>Create New Note</button>
+      <button title="New Note" onClick={onNewItemClicked}>
+        Create New Item
+      </button>
       // <button
       //   className="icon-button"
       //   title="New Note"
@@ -68,33 +70,17 @@ const DashHeader = () => {
 
   let newUserButton = null;
   if (!pathname.includes("/dash")) {
-    newUserButton = (
-      <button>Add New User</button>
-      // <button
-      //   className="icon-button"
-      //   title="New User"
-      //   onClick={onNewUserClicked}
-      // >
-      //   <FontAwesomeIcon icon={faUserPlus} />
-      // </button>
-    );
   }
 
   let userButton = null;
   if (email) {
-    userButton = (
-      <button>User Profile</button>
-      // <button className="icon-button" title="Users" onClick={onUsersClicked}>
-      //   <FontAwesomeIcon icon={faUserGear} />
-      // </button>
-    );
   }
 
   let notesButton = null;
   if (pathname.includes("/dash")) {
     notesButton = (
       <button title="Notes" onClick={onListClicked}>
-        Notes
+        Items
       </button>
       // <button className="icon-button" title="Notes" onClick={onListClicked}>
       //   <FontAwesomeIcon icon={faFilePen} />
@@ -121,7 +107,6 @@ const DashHeader = () => {
       <>
         {newNoteButton}
         {notesButton}
-        {userButton}
         {logoutButton}
       </>
     );

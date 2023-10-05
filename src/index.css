@@ -309,10 +309,6 @@ a:focus-visible {
   padding: 10px;
 }
 .outlet__window--form-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
 }
 
 .outlet__window--form-container form {
@@ -387,6 +383,15 @@ tr {
   position: sticky;
   top: 0;
   z-index: 1;
+}
+
+#dash-header {
+  color: white;
+  margin-bottom: 5px;
+  text-align: center;
+  letter-spacing: 4px;
+  text-underline-offset: 4px;
+  text-decoration: underline;
 }
 
 .table__th,
@@ -579,6 +584,10 @@ tr {
 
   .table--groups {
     grid-template-columns: repeat(3, 1fr) 2fr;
+  }
+
+  #table--group-info {
+    grid-template-columns: repeat(2, 1fr) 2fr;
   }
 
   .group__created,
