@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { setCredentials } from "../../features/auth/authSlice";
 // https://group-grocery-list-sam-caballero.onrender.com
 const baseQuery = fetchBaseQuery({
-  baseUrl: "https://group-grocery-list-sam-caballero.onrender.com/",
+  baseUrl: "https://group-grocery-list-sam-caballero-backend.onrender.com/",
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = getState().auth.token;
