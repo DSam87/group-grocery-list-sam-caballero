@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { setCredentials } from "../../features/auth/authSlice";
 // https://group-grocery-list-sam-caballero.onrender.com
 const baseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:3500",
+  baseUrl: "https://family-grocery-app.onrender.com",
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     const token = getState().auth.token;
@@ -18,8 +18,6 @@ const baseQuery = fetchBaseQuery({
 const baseQueryWithReauth = async (args, api, extraOptions) => {
   // send base query to server
   let result = await baseQuery(args, api, extraOptions);
-  console.log("BASE QUERY SET AGAIN!");
-  console.log(result?.error?.status);
 
   // if access token in header is expired, try to get a new one with your refreshtoken that is in the cookie jwt
   if (result?.error?.status === 403) {

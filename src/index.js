@@ -23,7 +23,14 @@ root.render(
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
-          <Route path="/*" element={<App />}></Route>
+          <Route
+            path="/*"
+            element={
+              <div className="h-screen w-screen">
+                <App />
+              </div>
+            }
+          ></Route>
         </Routes>
       </BrowserRouter>
     </Provider>

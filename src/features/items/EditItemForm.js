@@ -7,8 +7,6 @@ import {
 import { useNavigate } from "react-router-dom";
 
 const EditItemForm = ({ item }) => {
-  console.log(item);
-
   const [isCompleted, setIsCompleted] = useState(item.completed);
   const [itemName, setItemName] = useState(item.itemName);
   const [quantity, setQuantity] = useState(item.quantity);
@@ -67,7 +65,7 @@ const EditItemForm = ({ item }) => {
   content = (
     <div className="outlet__window--form-container">
       <form
-        className={`form ${isVisible}`}
+        className={`flex flex-col ${isVisible}`}
         onsubmit={(e) => {
           e.preventDefault();
         }}
@@ -79,7 +77,7 @@ const EditItemForm = ({ item }) => {
           Item Name: <span className="nowrap">[3-20 letters]</span>
         </label>
         <input
-          className={`form__input ${validItemName}`}
+          className={`form__input ${validItemName} text-black`}
           id="username"
           name="username"
           type="text"
@@ -92,7 +90,7 @@ const EditItemForm = ({ item }) => {
           Quantity:
         </label>
         <input
-          className={`form__input ${validPwdClass}`}
+          className={`form__input ${validPwdClass} text-black`}
           id="password"
           name="password"
           value={quantity}
@@ -106,14 +104,14 @@ const EditItemForm = ({ item }) => {
           type="checkbox"
           id="email"
           name="email"
-          className={`form__input completed__input`}
+          className={`form__input completed__input text-black`}
           checked={isCompleted}
           onChange={onIsCompletedChange}
         />
 
-        <div className="form__action-buttons form__action-buttons-flex">
+        <div className="flex flex-col h-[200px] justify-evenly">
           <button
-            className={`icon-text-button ${
+            className={`icon-text-button bg-white rounded-md mt-5 py-5 text-black${
               canSave ? "" : "text-button-not-valid"
             }`}
             title="Save"
@@ -125,14 +123,14 @@ const EditItemForm = ({ item }) => {
             </i>
           </button>
           <button
-            className={`icon-text-button ${
+            className={`icon-text-button bg-red-700 rounded-md mt-5 text-white ${
               canSave ? "" : "text-button-not-valid"
             }`}
             title="Save"
             disabled={!canSave}
             onClick={onDeleteClicked}
           >
-            <i className="icon-button-inline">
+            <i className="icon-button-inline ">
               <i>Delete Item</i>
             </i>
           </button>

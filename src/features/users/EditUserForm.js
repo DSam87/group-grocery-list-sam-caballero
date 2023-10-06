@@ -121,7 +121,7 @@ const EditUserForm = ({ user }) => {
           Username: <span className="nowrap">[3-20 letters]</span>
         </label>
         <input
-          className={`form__input ${validUserClass}`}
+          className={`form__input ${validUserClass} text-black`}
           id="username"
           name="username"
           type="text"
@@ -134,7 +134,7 @@ const EditUserForm = ({ user }) => {
           Password: <span className="nowrap">[4-12 chars incl. !@#$%]</span>
         </label>
         <input
-          className={`form__input ${validPwdClass}`}
+          className={`form__input ${validPwdClass} text-black`}
           id="password"
           name="password"
           type="password"
@@ -148,7 +148,7 @@ const EditUserForm = ({ user }) => {
         <input
           id="email"
           name="email"
-          className={`form__input ${validEmailClass}`}
+          className={`form__input ${validEmailClass} text-black`}
           value={email}
           onChange={onEmailChanged}
         />
@@ -158,7 +158,7 @@ const EditUserForm = ({ user }) => {
         <input
           id="familyGroupId"
           name="familyGroupId"
-          className={`form__input ${validFamilyGroupIdClass}`}
+          className={`form__input ${validFamilyGroupIdClass} text-black`}
           value={familyGroupId}
           onChange={onFamilyGroupIdChange}
           maxLength={6}

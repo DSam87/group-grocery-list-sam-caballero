@@ -17,6 +17,20 @@ const PWD_REGEX = /^[A-z0-9!@#$%]{4,12}$/;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const SignupGroup = () => {
+  const [width, setWidth] = useState(window.innerWidth);
+
+  function handleWindowSizeChange() {
+    setWidth(window.innerWidth);
+  }
+  useEffect(() => {
+    window.addEventListener("resize", handleWindowSizeChange);
+    return () => {
+      window.removeEventListener("resize", handleWindowSizeChange);
+    };
+  }, []);
+
+  const isMobile = width <= 768;
+
   const [
     login,
     {
@@ -97,6 +111,7 @@ const SignupGroup = () => {
 
   const generateString = (e) => {
     e.preventDefault();
+
     let result = "";
     const characters = "abcdefghijklmnopqrstuvwxyz0123456789";
     const charactersLength = characters.length;
@@ -110,17 +125,17 @@ const SignupGroup = () => {
 
   const onSaveGroupClicked = async (e) => {
     e.preventDefault();
-
-    const { accessToken } = await login({
-      email: email,
-      password,
-      lastName,
-      username,
-      familyGroupId,
-      isGroupSignup: true,
-    }).unwrap();
-
-    dispatch(setCredentials({ accessToken }));
+    if (canSave) {
+      const { accessToken } = await login({
+        email: email,
+        password,
+        lastName,
+        username,
+        familyGroupId,
+        isGroupSignup: true,
+      }).unwrap();
+      const response = await dispatch(setCredentials({ accessToken }));
+    }
   };
 
   const errClass = loginIsError ? "errmsg" : "offscreen";
@@ -133,8 +148,8 @@ const SignupGroup = () => {
     : "";
 
   let content = (
-    <section className="public">
-      <main className="login ">
+    <section className="flex flex-col w-auto md:w-[400px] h-[screen] sm:w-screen  bg-emerald-900 p-5">
+      <main className={` ${isMobile ? "login w-auto h-auto  " : ""}`}>
         <form className="form public-form" onSubmit={onSaveGroupClicked}>
           <div className="form__title-row">
             <h2>New Group</h2>
@@ -143,7 +158,7 @@ const SignupGroup = () => {
             Firstname: <span className="nowrap">[3-20 letters]</span>
           </label>
           <input
-            className={`form__input ${validUserClass}`}
+            className={`form__input text-black  ${validUserClass}`}
             id="username"
             name="username"
             type="text"
@@ -155,7 +170,7 @@ const SignupGroup = () => {
             Lastname: <span className="nowrap">[3-20 letters]</span>
           </label>
           <input
-            className={`form__input ${validLastNameClass}`}
+            className={`form__input text-black ${validLastNameClass}`}
             id="lastName"
             name="lastName"
             type="text"
@@ -170,7 +185,7 @@ const SignupGroup = () => {
           <input
             id="email"
             name="email"
-            className={`form__input ${validEmailClass}`}
+            className={`form__input text-black ${validEmailClass}`}
             value={email}
             onChange={onEmailChanged}
           />
@@ -179,7 +194,7 @@ const SignupGroup = () => {
             Password: <span className="nowrap">[4-12 chars incl. !@#$%]</span>
           </label>
           <input
-            className={`form__input ${validPwdClass}`}
+            className={`form__input text-black ${validPwdClass}`}
             id="password"
             name="password"
             type="password"
@@ -204,14 +219,16 @@ const SignupGroup = () => {
             readOnly
             id="familyGroupId"
             name="familyGroupId"
-            className={`form__input ${validFamilyGroupIdClass}`}
+            className={`form__input text-black ${validFamilyGroupIdClass}`}
             value={familyGroupId}
             onChange={onFamilyGroupIdChange}
             onClick={generateString}
             maxLength={6}
             placeholder="e.g. 123abc"
           />
-          <button className="form__submit-button">Create Group</button>
+          <button className="form__submit-button bg-white text-emerald-950 py-6 mt-5 rounded-sm">
+            Create New User & Group
+          </button>
         </form>
       </main>
       <footer>

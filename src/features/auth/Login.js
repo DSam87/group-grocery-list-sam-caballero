@@ -38,7 +38,6 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Handle submit");
     try {
       const { accessToken } = await login({
         email,
@@ -69,11 +68,11 @@ const Login = () => {
   if (isLoading) content = <p>Loading...</p>;
 
   content = (
-    <section className="public">
+    <section className="w-auto md:w-[400px] sm:w-screen h-screen bg-emerald-900 p-5">
       <header>
         <h1>User Login</h1>
       </header>
-      <main className="login ">
+      <main className="">
         <p ref={errRef} className={errClass} aria-live="assertive">
           {errMsg}
         </p>
@@ -81,7 +80,7 @@ const Login = () => {
         <form className="form public-form" onSubmit={handleSubmit}>
           <label htmlFor="email">Email:</label>
           <input
-            className="form__input"
+            className="form__input text-black"
             type="email"
             id="email"
             ref={emailRef}
@@ -93,20 +92,22 @@ const Login = () => {
 
           <label htmlFor="password">Password:</label>
           <input
-            className="form__input"
+            className="form__input text-black"
             type="password"
             id="password"
             onChange={handlePwdInput}
             value={password}
             required
           />
-          <button className="form__submit-button">Sign In</button>
+          <button className="form__submit-button bg-white text-emerald-950 py-6 mt-5 rounded-sm">
+            Login
+          </button>
 
           <label htmlFor="persist" className="form__persist">
             <input
               hidden
               type="checkbox"
-              className="form__checkbox"
+              className="form__checkbox "
               id="persist"
               onChange={handleToggle}
               checked={true}

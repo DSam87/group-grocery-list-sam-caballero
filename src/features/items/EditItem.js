@@ -6,10 +6,8 @@ import { useSelector } from "react-redux";
 import EditItemForm from "./EditItemForm";
 
 const EditItem = () => {
-  console.log("Heoolo");
   const { id } = useParams();
   const item = useSelector((state) => selectItemById(state, id));
-  console.log(item);
 
   const content = item ? <EditItemForm item={item} /> : <p>Loading...</p>;
 

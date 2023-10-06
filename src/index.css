@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   margin: 0;
   padding: 0;
@@ -309,6 +313,10 @@ a:focus-visible {
   padding: 10px;
 }
 .outlet__window--form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 .outlet__window--form-container form {

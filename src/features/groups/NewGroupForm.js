@@ -94,38 +94,56 @@ const NewGroupForm = () => {
   }, [isSuccess, userIsSuccess, navigate]);
 
   useEffect(() => {
+    alert(error);
+    return;
+  }, [isError, error]);
+
+  useEffect(() => {
     async function addUserAsync() {
       await addNewUser({
+        isGroupSignup: true,
         password,
         email,
         familyGroupId: familyGroupId,
+        lastName,
         username,
       });
     }
     if (isSuccess) {
       addUserAsync();
+    } else {
+      return;
     }
   }, [isSuccess]);
 
-  const canSave =
-    [
-      validPassword,
-      validUsername,
-      validEmail,
-      validFamilyGroupId,
-      validLastName,
-    ].every(Boolean) && !isLoading;
+  function checkInputs() {
+    const canSave =
+      [
+        validPassword,
+        validUsername,
+        validEmail,
+        validFamilyGroupId,
+        validLastName,
+      ].every(Boolean) && !isLoading;
+  }
+
+  let canSave = checkInputs();
 
   const onSaveGroupClicked = async (e) => {
     e.preventDefault();
 
+    let canSave = checkInputs();
+
     if (canSave) {
-      await addNewGroup({
+      let returnValue = await addNewGroup({
+        isGroupSignup: true,
         password,
         creatorEmail: email,
         familyGroupId,
         familyLastName: lastName,
       });
+    } else {
+      return;
     }
   };
 
@@ -211,9 +229,9 @@ const NewGroupForm = () => {
         />
         <div className="form__action-buttons form__action-buttons-flex">
           <button
-            className={`icon-text-button ${
-              canSave ? "" : "text-button-not-valid"
-            }`}
+            className={`${
+              userIsLoading ? "disabled" : "active"
+            } icon-text-button ${canSave ? "" : "text-button-not-valid"}`}
             title="Save"
             disabled={!canSave}
           >

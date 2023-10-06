@@ -26,7 +26,7 @@ const DashFooter = () => {
   }
 
   const content = (
-    <footer className="dash-footer">
+    <footer className="flex flex-col md:flex-row md:justify-between bg-emerald-950  bottom-0 w-full">
       {/* {goHomeButton} */}
       <p>
         Current User: <b>{username}</b>

@@ -15,29 +15,26 @@ const Item = ({ itemId, userId }) => {
   const item = useSelector((state) => selectItemById(state, itemId));
   const user = useSelector((state) => selectUserById(state, userId));
 
-  console.log("INSIDE ITEM");
-  console.log(item);
-  console.log(user);
-
   let completedClass = "";
 
-  if (item.completed) completedClass = " completed";
+  if (item.completed) completedClass = " bg-green-500 line-through";
 
   const handleEdit = () => navigate(`/dash/items/${itemId}`);
 
   return (
-    <tr className={`table__row `}>
-      <td className={`table__cell ${completedClass} group__title`}>
+    <tr
+      className={`flex flex-row justify-between bg-white border-b dark:bg-gray-800 dark:border-gray-700 ${completedClass}`}
+    >
+      {/* <td className={`table__cell ${completedClass} group__title`}>
         {user?.username}
-      </td>
-      <td className={`table__cell ${completedClass} group__username`}>
-        {item?.itemName}
-      </td>
-      <td className={`table__cell ${completedClass} group__username`}>
-        {item?.quantity}
-      </td>
-      <td className={`table__cell ${completedClass}`}>
-        <button className="icon-button table__button" onClick={handleEdit}>
+      </td> */}
+      <td className={`px-6 py-3`}>{item?.itemName}</td>
+      <td className={`px-6 py-3`}>{item?.quantity}</td>
+      <td className={`px-6 py-3 ${completedClass}`}>
+        <button
+          className="w-[50px] text-center items-center"
+          onClick={handleEdit}
+        >
           <FontAwesomeIcon icon={faPenToSquare} />
         </button>
       </td>

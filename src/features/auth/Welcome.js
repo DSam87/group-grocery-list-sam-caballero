@@ -11,8 +11,6 @@ const Welcome = () => {
     currentUserId,
   } = useAuth();
 
-  console.log(username, currentUserId, email);
-
   const date = new Date();
   const today = new Intl.DateTimeFormat("en-US", {
     dateStyle: "full",
@@ -24,19 +22,18 @@ const Welcome = () => {
       {" "}
       {/* <p>{today}</p>
       <h1>Welcome {username}!</h1> */}
-      <section className="welcome h-1">
+      <section className="flex-auto bg-emerald-900 w-[400px] h-full flex flex-col gap-4 justify-around max-h-[870px]">
         {email ? (
           <>
-            <p>
-              <Link to="/dash/group">View Group Information</Link>
-            </p>
+            <Link to="/dash/group" className="">
+              View Group Information
+            </Link>
             <p>
               <Link to="/dash/users">View Users In Group</Link>
             </p>
             <p>
               <Link to="/dash/items">View Group Items</Link>
             </p>
-            <br />
             <p>
               <Link to={`/dash/users/${currentUserId}`}>
                 Manage User Account

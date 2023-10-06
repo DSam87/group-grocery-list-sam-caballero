@@ -8,6 +8,20 @@ import { useAddNewUserMutation } from "../users/usersApiSlice";
 import { useLoginMutation } from "./authApiSlice";
 
 const Signup = () => {
+  const [width, setWidth] = useState(window.innerWidth);
+
+  function handleWindowSizeChange() {
+    setWidth(window.innerWidth);
+  }
+  useEffect(() => {
+    window.addEventListener("resize", handleWindowSizeChange);
+    return () => {
+      window.removeEventListener("resize", handleWindowSizeChange);
+    };
+  }, []);
+
+  const isMobile = width <= 768;
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -43,7 +57,6 @@ const Signup = () => {
   }
 
   const handleSubmit = async function (e) {
-    console.log("Handle submit");
     e.preventDefault();
     if (canSave) {
       const { accessToken } = await login({
@@ -57,7 +70,6 @@ const Signup = () => {
       if (accessToken) {
         dispatch(setCredentials({ accessToken }));
       } else {
-        console.log("No accessToken");
       }
     }
   };
@@ -69,49 +81,50 @@ const Signup = () => {
   }, [isSuccess]);
 
   return (
-    <section className="public">
+    <section className="flex flex-col w-auto md:w-[400px] h-screen sm:w-screen  bg-emerald-900 p-5">
       <header>
         <h1>Signup</h1>
       </header>
-      <main className="login ">
+      <main
+        className={` ${
+          isMobile ? "login w-auto h-auto sm:w-screen sm:h-screen " : ""
+        }`}
+      >
         {/* <p ref={errRef} className={errClass} aria-live="assertive">
           {errMsg}
         </p> */}
 
-        <form className={"public-form"} method="post">
+        <form className={"form public-form"} method="post">
           <label htmlFor="username">Username:</label>
           <input
-            className="form__input"
+            className="form__input text-black "
             type="text"
             name="username"
             id="username"
             value={username}
             onChange={onUsernameChange}
           ></input>
-          <br />
           <label htmlFor="email">E-mail:</label>
           <input
-            className="form__input"
+            className="form__input text-black"
             type="email"
             name="email"
             id="email"
             value={email}
             onChange={onEmailChange}
           ></input>
-          <br />
           <label htmlFor="password">Password:</label>
           <input
-            className="form__input"
+            className="form__input text-black"
             type="password"
             name="password"
             id="password"
             value={password}
             onChange={onPasswordChange}
           ></input>
-          <br />
           <label htmlFor="group-id">Group Id:</label>
           <input
-            className="form__input"
+            className="form__input text-black"
             type="text"
             name="group-id"
             id="group-id"
@@ -128,7 +141,7 @@ const Signup = () => {
 
           <button
             type="submit"
-            className="form__submit-button"
+            className="form__submit-button bg-white text-emerald-950 py-6 mt-5 rounded-sm"
             onClick={handleSubmit}
           >
             {" "}

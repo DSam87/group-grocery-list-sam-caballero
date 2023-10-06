@@ -77,7 +77,10 @@ const NewItemForm = () => {
     <div className="outlet__window--form-container">
       <p className={errClass}>{error?.data?.message}</p>
 
-      <form className={`form ${isVisible}`} onSubmit={onSaveItemClicked}>
+      <form
+        className={`flex flex-col  ${isVisible}`}
+        onSubmit={onSaveItemClicked}
+      >
         <div className="form__title-row">
           {/* <h2>Add New Item to {groupCreatorLastname}'s Group</h2> */}
           <h2>Add New Item</h2>
@@ -86,7 +89,7 @@ const NewItemForm = () => {
           Item Title: <span className="nowrap">[3-20 letters]</span>
         </label>
         <input
-          className={`form__input ${validItemNameClass}`}
+          className={`form__input text-black ${validItemNameClass}`}
           id="itemName"
           name="itemName"
           type="text"
@@ -98,7 +101,7 @@ const NewItemForm = () => {
           Quantity: <span className="nowrap">[3-20 letters]</span>
         </label>
         <input
-          className={`form__input ${validQuantityClass}`}
+          className={`form__input text-black ${validQuantityClass}`}
           id="quantity"
           name="quantity"
           type="number"
@@ -107,18 +110,18 @@ const NewItemForm = () => {
           onChange={onQuantityChanged}
         />
 
-        <div className="form__action-buttons form__action-buttons-flex">
+        <div className="flex flex-row ">
           <button
-            className={`icon-text-button ${
+            className={`icon-text-button bg-white rounded-md mt-5 text-black ${
               canSave ? "" : "text-button-not-valid"
             }`}
             title="Save"
             disabled={!canSave}
           >
-            <i className="icon-button-inline">
+            <p className="icon-button-inline">
               <FontAwesomeIcon icon={faSave} />
               <i>Add Item</i>
-            </i>
+            </p>
           </button>
         </div>
       </form>

@@ -8,13 +8,11 @@ import useAuth from "../../hooks/useAuth";
 
 const Prefetch = () => {
   useEffect(() => {
-    console.log("Subscribing");
     const notes = store.dispatch(groupsApiSlice.endpoints.getGroups.initiate());
     const users = store.dispatch(usersApiSlice.endpoints.getUsers.initiate());
     const items = store.dispatch(itemsApiSlice.endpoints.getItems.initiate());
 
     return () => {
-      console.log("unsubscribing");
       notes.unsubscribe();
       users.unsubscribe();
       items.unsubscribe();
