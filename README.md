@@ -4,7 +4,7 @@
 <img src="https://sam-caballero-deleon-portfolio-one.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fgroup-app.ee104f84.gif&w=640&q=75"/>
 
 ## Group Grocery List
-A simple full stack application for your family and friends to create a insync grocery list. <br/>
+A simple full stack application for your family and friends to create a in sync grocery list. <br/>
 Create a group with a family/group ID and share it with your family & friends to join in on the group.<br/>
 Add, update, remove or 'complete' items from the group list to stay updated together.
 
