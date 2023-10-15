@@ -9,12 +9,29 @@ Create a group with a family/group ID and share it with your family & friends to
 Add, update, remove or 'complete' items from the group list to stay updated together.
 
 ## Live Example 
-This project's front and back end are both deployed on <a href="https://render.com/">onrender.com</a> to give a live example of the project.
-<a href="https://group-grocery-list-sam-caballero.onrender.com/">https://group-grocery-list-sam-caballero.onrender.com/</a>
+This project's front-end and back-end have both been deployed on <a href="https://render.com/" target="_blank">onrender.com</a> to give a live example of the project.
+<br/>
+<a href="https://group-grocery-list-sam-caballero.onrender.com/" target="_blank">LIVE EXAMPLE </a> (group-grocery-list-sam-caballero.onrender.com)
+
+<ul>
+  <h4>Front-end</h4>
+  <ul>
+    <li>Github repo</li>
+    <li><a href="https://github.com/DSam87/group-grocery-list-sam-caballero" target="_blank">github.com/DSam87/group-grocery-list-sam-caballero</a></li>
+  </ul>
+
+  <h4>Back-end Api</h4>
+  <ul>
+    <li>Github repo</li>
+    <li><a href="https://github.com/DSam87/group-grocery-list-sam-caballero-backend" target="_blank">github.com/DSam87/group-grocery-list-sam-caballero-backend</a></li>
+  </ul>
+
+</ul>
+
 
 ## App Features
 <ul>
-  <li>Creating an account with an email and password.</li>
+  <li>Create an account with an email and password.</li>
   <li>Create a new group with a unique group ID.</li>
   <li>Join an existing group list by providing the group ID.</li>
   <li>Ability to add, edit and delete items from the group list.</li>
